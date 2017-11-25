@@ -52,6 +52,9 @@ mysql -u root -p;
 
 2. show variables **like** '变量名';
 
+3. constraint class_no_fk foreign kay(class_no) refererences stu(class_no);  //容易丢掉references stu(class_no)
+
+
 概念易混淆点：
 
 3. show **create** database 库名;  // **显示库的具体信息**。
