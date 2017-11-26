@@ -211,3 +211,82 @@ add column class_number int(60);
 ```
 
 -----------------------------
+
+5.复制表
+=============
+-------------------------------
+
+（1）复制表的字段以及字段类型和约束条件，不复制记录
+------------------
+
+语法：`create table  <table_name> like <table_name>`;
+
+例如：
+
+```
+create  table class(
+class_no int(60) NOT NULL AUTO_INCREMENT,
+class_number int(60) DEFAULT NULL);
+insert into class values(33,40);
+select * from class;
+create table class1 like class;
+show create table class1\G;
+select * from class1;
+```
+
+结果如下：
+
+```
+mysql> select * from class;
++----------+--------------+
+| class_no | class_number |
++----------+--------------+
+|       33 |           40 |
++----------+--------------+
+1 row in set (0.00 sec)
+mysql> show create table class1\G;
+*************************** 1. row ***************************
+       Table: class1
+Create Table: CREATE TABLE `class1` (
+  `class_no` int(60) NOT NULL AUTO_INCREMENT,
+  `class_number` int(60) DEFAULT NULL,
+  PRIMARY KEY (`class_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+1 row in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> select * from class1;
+Empty set (0.00 sec)
+```
+
+---------------------
+
+
+（2）复制字段，字段类型，约束条件，以及记录
+-------------------------------------
+
+语法：`create table <new_table_name> select * from <table_name>`
+
+```
+create table class2 select * frorm class;
+show create table class2;
+show index from class2\G;
+select * from class2;
+```
+
+结果如下：
+
+```
+mysql> create table class2 select * from class;
+Query OK, 1 row affected (0.38 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from class2;
++----------+--------------+
+| class_no | class_number |
++----------+--------------+
+|       33 |           40 |
++----------+--------------+
+```
