@@ -290,3 +290,40 @@ mysql> select * from class2;
 |       33 |           40 |
 +----------+--------------+
 ```
+---------------------------
+
+
+# 6. 创建索引
+
+----------------------
+ (1)新建索引
+
+-----------
+语法：在创建表时，用`[unique|fulltext] index <索引名> （<字段名>+（长度））`
+
+例如：
+
+```
+create table book(
+no int not null auto_increment primary key,
+name varchar(20) not null,
+brief_intruduction text not null,
+price dec(6,2) not null,
+publish_time date not null,
+index price_index (price (10)) 
+```
+-----------------
+
+
+ (2) 新增索引
+
+------------
+语法：`alter table <table_name> add <index>`
+
+例如：
+
+```
+alter table  book
+add unique index no_index (no);
+```
+------------------------
