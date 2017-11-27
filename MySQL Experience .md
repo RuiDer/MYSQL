@@ -54,7 +54,13 @@ mysql -u root -p;
 
 3. constraint class_no_fk foreign kay(class_no) refererences stu(class_no);  //容易丢掉references stu(class_no)
 
+4. alter table auto_increment=<数值>        //对自增型数值的设置
 
+5. delete from <table_name> where()          //删除表中的记录
+
+6. index <索引名> (字段名(length))            //设置索引，length不能超过字段初始设置的长度
+
+7. alter table <table_name> drop foreign key <外键名>;   //删除外键
 概念易混淆点：
 
 3. show **create** database 库名;  // **显示库的具体信息**。
@@ -66,3 +72,5 @@ mysql -u root -p;
 6. show tables;   //显示有哪些表
 
 7. select * from 表名;    //显示表里的具体内容
+
+8. alter table <table_name> rename/add/drop/change ......;     //对表的改变
