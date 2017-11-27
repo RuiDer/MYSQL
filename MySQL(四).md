@@ -2,7 +2,10 @@
 
 ## 1. 添加记录
 ------------------------
-语法：`insert into <table_name>(各个参数名称) values(参数对应值)`
+语法：（1）.`insert into <table_name>(各个参数名称) values(参数对应值)`
+      （2）. `insert into <table_name> <(字段列表..)> select * from <table_name> <(字段列表)>`
+
+                   //向已有的表中添加记录
 
 例如：
 
